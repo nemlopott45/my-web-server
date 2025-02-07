@@ -7,7 +7,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const PORT = process.env.PORT || 3000;
+// Használj dinamikus portot, hogy működjön a Railway-n
+const port = process.env.PORT || 3000;
 
 // Statikus fájlok kiszolgálása
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,6 +48,6 @@ io.on('connection', (socket) => {
 });
 
 // Szerver indítása
-server.listen(PORT, () => {
-    console.log(`Szerver fut a http://localhost:${PORT} címen`);
+server.listen(port, () => {
+    console.log(`Szerver fut a http://localhost:${port} címen`);
 });
