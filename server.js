@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Statikus fájlok kiszolgálása
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,6 +47,6 @@ io.on('connection', (socket) => {
 });
 
 // Szerver indítása
-server.listen(port, () => {
-    console.log(`Szerver fut a http://localhost:${port} címen`);
+server.listen(PORT, () => {
+    console.log(`Szerver fut a http://localhost:${PORT} címen`);
 });
