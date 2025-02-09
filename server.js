@@ -22,7 +22,7 @@ app.get('/page2', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'chatindex.html'));
 });
 
-// Várakozó üzenetek tárolása
+// Várakozó üzenetek tárolása, egyes üzeneteknél van egy `isSeen` mező
 let waitingMessages = [];
 
 // WebSocket események kezelése
@@ -34,11 +34,20 @@ io.on('connection', (socket) => {
 
     // Üzenet fogadása
     socket.on('chat message', (msg) => {
-        // Az üzenet hozzáadása a várakozó üzenetekhez
-        waitingMessages.push(msg);
+        // Az üzenet hozzáadása a várakozó üzenetekhez, isSeen alapértelmezetten false
+        waitingMessages.push({ message: msg, isSeen: false });
 
         // Az üzenetet minden csatlakozott felhasználónak elküldjük
         io.emit('chat message', msg);
+    });
+
+    // Üzenet láttatásának eseménye
+    socket.on('message seen', (messageIndex) => {
+        // Ha az üzenet még nincs olvasva, akkor jelezzük, hogy el lett olvasva
+        if (!waitingMessages[messageIndex].isSeen) {
+            waitingMessages[messageIndex].isSeen = true;
+            console.log(`Az üzenet el lett olvasva: ${waitingMessages[messageIndex].message}`);
+        }
     });
 
     // Felhasználó lecsatlakozásakor semmi különös nem történik
