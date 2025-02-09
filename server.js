@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 // Használj dinamikus portot, hogy működjön a Railway-n
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // Statikus fájlok kiszolgálása
 app.use(express.static(path.join(__dirname, 'public')));
