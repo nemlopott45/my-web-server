@@ -1,0 +1,81 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background{
+    background-image: url(mountains-6243826_1280.webp);
+    width: 110%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container{
+    margin: 0 auto;
+    border: 2px solid cyan;
+    box-shadow: 0px 0px 15px cyan, 0px 0px 15px cyan inset;
+    border-radius: 20px;
+    width: 350px;
+    height: 450px;
+    padding: 20px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+
+}
+.user{
+    padding-top: 10px;
+}
+input{
+    width: 75%;
+    font-size: 16px;
+    padding: 8px 10px;
+    background: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    margin-bottom: 70px;
+    border-radius: 7px;
+    color: white;
+}
+input::placeholder{
+    color: white;
+}
+button:hover{
+    transform: scale(1.1);
+    color: white;
+    text-shadow: 0px 0px 10px cyan,
+                 0px 0px 20px cyan,
+                 0px 0px 40px cyan,
+                 0px 0px 80px cyan;
+}
+button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 8px 30px;
+    font-size: 20px;
+    background: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+a{
+    text-decoration: none;
+    color: black;
+
+}
